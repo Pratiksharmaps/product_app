@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../models/product_model.dart';
-import '../services/api_client.dart';
+import '../../../services/api_client.dart';
 
 abstract class ProductState {}
 

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:product_app/models/product_model.dart';
+import 'package:product_app/features/product/models/product_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiClient {

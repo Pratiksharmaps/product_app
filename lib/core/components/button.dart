@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:product_app/components/colors.dart';
+import 'package:product_app/core/components/colors.dart';
 class Button extends StatelessWidget {
   final String buttonText;
   final  Function()? buttonFunction;
@@ -16,7 +16,7 @@ class Button extends StatelessWidget {
         width: 238,
         margin: const EdgeInsets.fromLTRB(10, 5, 10, 5),
         decoration: const BoxDecoration(
-          color: secondaryColor,
+          color: primaryColor,
           borderRadius: BorderRadius.all(Radius.circular(11)),
         ),
         child: Center(

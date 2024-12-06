@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:product_app/cubits/product_cubit.dart';
-import 'package:product_app/screens/SignUp.dart';
-import 'package:product_app/screens/product_list_screen.dart';
-import 'package:product_app/screens/signin.dart';
-import 'cubits/auth_cubit.dart';
-import 'cubits/search_cubit.dart';
+import 'package:product_app/features/product/cubits/product_cubit.dart';
+import 'package:product_app/features/auth/screens/SignUp.dart';
+import 'package:product_app/features/product/models/product_list_screen.dart';
+import 'package:product_app/features/auth/screens/signin.dart';
+import 'features/auth/cubits/auth_cubit.dart';
+import 'features/product/cubits/search_cubit.dart';
 import 'services/api_client.dart';
 
 

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../services/api_client.dart';
+import '../../../services/api_client.dart';
 
 enum AuthStatus { initial, loading, authenticated, unauthenticated, error }
 

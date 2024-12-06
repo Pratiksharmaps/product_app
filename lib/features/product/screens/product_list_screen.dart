@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:product_app/cubits/auth_cubit.dart';
+import 'package:product_app/features/auth/cubits/auth_cubit.dart';
 import '../cubits/product_cubit.dart';
-import '../widgets/product_card.dart';
+import '../../../core/widgets/product_card.dart';
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({super.key});

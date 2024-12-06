@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:product_app/screens/SignUp.dart';
+import 'package:product_app/features/auth/screens/SignUp.dart';
 import '../cubits/auth_cubit.dart';
-import '../components/button.dart';
-import '../components/defField.dart';
-import '../components/colors.dart';
+import '../../../core/components/button.dart';
+import '../../../core/components/defField.dart';
+import '../../../core/components/colors.dart';
 
 
 class SignInScreen extends StatefulWidget {
@@ -109,7 +109,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 5),
+                      const SizedBox(height: 10),
                       BlocConsumer<AuthCubit, AuthState>(
                         listener: (context, state) {
                           if (state.status == AuthStatus.error) {

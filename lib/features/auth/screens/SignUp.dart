@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:product_app/screens/signin.dart';
+import 'package:product_app/features/auth/screens/signin.dart';
 import '../cubits/auth_cubit.dart';
-import '../components/button.dart';
-import '../components/defField.dart';
-import '../components/colors.dart';
+import '../../../core/components/button.dart';
+import '../../../core/components/defField.dart';
+import '../../../core/components/colors.dart';
 
 
 class SignUpScreen extends StatefulWidget {

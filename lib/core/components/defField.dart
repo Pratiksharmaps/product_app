@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:product_app/components/colors.dart';
+import 'package:product_app/core/components/colors.dart';
 
 class DefField extends StatelessWidget {
   final TextEditingController controller;

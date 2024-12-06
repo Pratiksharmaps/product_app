@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import '../services/api_client.dart';
+import '../../../services/api_client.dart';
 
 enum SearchStatus { initial, loading, success, error }
 

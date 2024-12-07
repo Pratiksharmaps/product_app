@@ -6,7 +6,6 @@ import '../../../core/components/button.dart';
 import '../../../core/components/defField.dart';
 import '../../../core/components/colors.dart';
 
-
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
@@ -78,8 +77,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'Field cannot be empty';
-                                } else if (!value.contains(
-                                    RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'))) {
+                                } else if (!value.contains(RegExp(
+                                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'))) {
                                   return 'Please enter a valid Email';
                                 }
                                 return null;
@@ -91,7 +90,9 @@ class _SignInScreenState extends State<SignInScreen> {
                               hint: "Enter your password",
                               obsecure: _showPassword,
                               lable: "Password",
-                              iconName: _showPassword ? Icons.visibility_off : Icons.visibility,
+                              iconName: _showPassword
+                                  ? Icons.visibility_off
+                                  : Icons.visibility,
                               iconFunction: () {
                                 setState(() {
                                   _showPassword = !_showPassword;
@@ -105,11 +106,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                 return null;
                               },
                             ),
-                           
                           ],
                         ),
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 30),
                       BlocConsumer<AuthCubit, AuthState>(
                         listener: (context, state) {
                           if (state.status == AuthStatus.error) {
@@ -117,7 +117,8 @@ class _SignInScreenState extends State<SignInScreen> {
                               SnackBar(content: Text(state.error!)),
                             );
                           } else if (state.status == AuthStatus.authenticated) {
-                            Navigator.pushReplacementNamed(context, '/products');
+                            Navigator.pushReplacementNamed(
+                                context, '/products');
                           }
                         },
                         builder: (context, state) {
@@ -126,9 +127,9 @@ class _SignInScreenState extends State<SignInScreen> {
                             buttonFunction: () {
                               if (_formKey.currentState!.validate()) {
                                 context.read<AuthCubit>().login(
-                                  _emailController.text,
-                                  _passwordController.text,
-                                );
+                                      _emailController.text,
+                                      _passwordController.text,
+                                    );
                               }
                             },
                           );
@@ -153,7 +154,8 @@ class _SignInScreenState extends State<SignInScreen> {
                     GestureDetector(
                       onTap: () => Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                        MaterialPageRoute(
+                            builder: (context) => const SignUpScreen()),
                       ),
                       child: const Text(
                         "Register",
@@ -166,7 +168,6 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ],
                 ),
-    
               ],
             ),
           ),
@@ -175,4 +176,3 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 }
-

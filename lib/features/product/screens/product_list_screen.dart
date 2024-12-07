@@ -1,12 +1,10 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:product_app/core/widgets/product_card.dart';
 import 'package:product_app/features/auth/cubits/auth_cubit.dart';
 import '../cubits/product_cubit.dart';
-import '../../../core/widgets/product_card.dart';
-
 class ProductListScreen extends StatefulWidget {
-  const ProductListScreen({super.key});
+  const ProductListScreen({Key? key}) : super(key: key);
 
   @override
   _ProductListScreenState createState() => _ProductListScreenState();
@@ -14,7 +12,6 @@ class ProductListScreen extends StatefulWidget {
 
 class _ProductListScreenState extends State<ProductListScreen> {
   final TextEditingController _searchController = TextEditingController();
-  Timer? _debounce;
 
   @override
   void initState() {
@@ -25,15 +22,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   void dispose() {
     _searchController.dispose();
-    _debounce?.cancel();
     super.dispose();
   }
 
   void _onSearchChanged(String query) {
-    if (_debounce?.isActive ?? false) _debounce!.cancel();
-    _debounce = Timer(const Duration(milliseconds: 500), () {
-      context.read<ProductCubit>().searchProducts(query);
-    });
+    context.read<ProductCubit>().searchProducts(query);
   }
 
   @override
@@ -41,11 +34,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Product List'),
-        actions: [
+         actions: [
           IconButton(
             icon: const Icon(Icons.logout),
             onPressed: ()async {
-          await  context.read<AuthCubit>().logout();
+            await  context.read<AuthCubit>().logout();
               Navigator.pushReplacementNamed(context, '/login');
             },
           ),
@@ -73,19 +66,21 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 if (state is ProductLoading) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (state is ProductLoaded) {
-                  return GridView.builder(
-                    padding: const EdgeInsets.all(8),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.75,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                    ),
-                    itemCount: state.products.length,
-                    itemBuilder: (context, index) {
-                      return ProductCard(product: state.products[index]);
-                    },
-                  );
+                  return state.filteredProducts.isEmpty
+                      ? const Center(child: Text('No products found'))
+                      : GridView.builder(
+                          padding: const EdgeInsets.all(8),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.75,
+                            crossAxisSpacing: 10,
+                            mainAxisSpacing: 10,
+                          ),
+                          itemCount: state.filteredProducts.length,
+                          itemBuilder: (context, index) {
+                            return ProductCard(product: state.filteredProducts[index]);
+                          },
+                        );
                 } else if (state is ProductError) {
                   return Center(child: Text('Error: ${state.message}'));
                 }
